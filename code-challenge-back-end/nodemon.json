@@ -1,9 +1,0 @@
-{
-
-    "env":{
-        "MONGODB_USERNAME": "billyli",
-        "MONGODB_PASSWORD": "iE7e2ODW9r2TkvlT",
-        "DB_NAME": "codeChallenge",
-        "SECRET":"somethingBBBBAD"
-    }
-}
