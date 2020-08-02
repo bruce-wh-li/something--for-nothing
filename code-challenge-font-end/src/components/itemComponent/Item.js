@@ -93,7 +93,7 @@ const PlaceItem = ({
       >
         <p>
           Do you want to proceed and delete this place? Please note that it
-          can't be undone thereafter.
+          can't be undone thereafter!
         </p>
       </Modal>
       <li className="place-item center">
