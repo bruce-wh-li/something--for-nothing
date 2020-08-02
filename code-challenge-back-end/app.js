@@ -41,7 +41,7 @@ app.use((error, req, res, next) => {
 mongoose
 	.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.casbs.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`)
 	.then(() => {
-		app.listen(process.env.PORT || 5000, 'localhost', function() {
+		app.listen(process.env.PORT || 5000, function() {
 			defaultLog.accessLog.info('Started server on port',process.env.PORT ||5000);
 		});
 	})
