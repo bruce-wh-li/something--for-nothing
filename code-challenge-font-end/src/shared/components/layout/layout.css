@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:wght@300&family=Patrick+Hand&family=ZCOOL+KuaiLe&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+/* font-family: 'Indie Flower', cursive;
+font-family: 'Patrick Hand', cursive;
+font-family: 'ZCOOL KuaiLe', cursive;
+font-family: 'Lato', sans-serif; */
+
+
+:root {
+  --primaryColor: #3fd0d4;
+  --mainWhite: #fff;
+  --offWhite: #f7f7f7;
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #afafaf;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 4px;
+  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+} */
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Indie Flower";
+  color: var(--mainBlack);
+  background: var(--mainWhite);
+  line-height: 1.4;
+  font-size: 1rem;
+  margin: 0px;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lato", sans-serif;
+  margin-bottom: 1.25rem;
+  letter-spacing: var(--mainSpacing);
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+progress {
+  vertical-align: baseline;
+}
+p {
+  margin-bottom: 1.25rem;
+}
+a {
+  text-decoration: none;
+}
+main {
+  min-height: 100vh; 
+  /* min-height: auto;  */
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (max-width: 480px) {
+  html {
+    font-size: 100%;
+  }
+  .button {
+    padding: 0.9rem 0.5rem;
+  }
+}
+
+.center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

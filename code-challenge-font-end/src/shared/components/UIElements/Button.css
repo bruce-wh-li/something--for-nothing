@@ -1,0 +1,74 @@
+
+.button {
+  font-family:'Patrick Hand';
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  color: var(--mainBlack);
+  background: var(--mainWhite);
+  border: 2px solid var(--mainBlack);
+  padding: 0.9rem 1.6rem;
+  display: inline-block;
+  transition: var(--mainTransition);
+  cursor: pointer;
+  text-decoration: none;
+  margin: 5px;
+}
+
+
+
+.button:hover,
+.button:active {
+  background: var(--mainWhite);
+  color: var(--primaryColor);
+}
+
+
+.button--inverse {
+  font-family:'Patrick Hand';
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  color: var(--mainWhite);
+  background: var(--primaryColor);
+  border: 2px solid var(--mainWhite);
+  padding: 0.9rem 1.6rem;
+  display: inline-block;
+  transition: var(--mainTransition);
+  cursor: pointer;
+  text-decoration: none;
+}
+.button--inverse:hover,
+.button--inverse:active {
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+  border: 2px solid var(--primaryColor);
+}
+
+.button--danger {
+  color: var(--mainWhite);
+  background: #830000;
+  border-color: #830000;
+}
+
+.button--danger:hover,
+.button--danger:active {
+  background: #f34343;
+  border-color: #f34343;
+}
+
+.button:disabled,
+.button:hover:disabled,
+.button:active:disabled {
+  background: #ccc;
+  color: #979797;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.button--small {
+  font-size: 0.8rem;
+  padding: 0.5rem;
+}
+
+.button--big {
+  font-size: 1.5rem;
+}
