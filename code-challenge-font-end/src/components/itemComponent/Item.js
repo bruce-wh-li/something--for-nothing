@@ -101,7 +101,7 @@ const PlaceItem = ({
           {isLoading && <LoadingSpinner asOverlay />}
           <div className="place-item__image">
             <img
-              src={`${process.env.REACT_APP_BACKEND_URL}/${image}`}
+              src={`${process.env.REACT_APP_ASSET_URL}/${image}`}
               alt={title}
             />
           </div>
