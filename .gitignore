@@ -1,8 +1,4 @@
-code-challenge-back-end/uploads/images/*.jpeg
-code-challenge-back-end/errors.log
-code-challenge-back-end/access.log
-code-challenge-back-end/node_modules/
-code-challenge-font-end/node_modules/
-code-challenge-font-end/.env
+code-challenge-back-end/node_modules/ajv/lib/dot/missing.def
 code-challenge-font-end/.env.production
-code-challenge-back-end/.env
+code-challenge-font-end/.env
+code-challenge-back-end/uploads/images/
