@@ -37,14 +37,15 @@ app.use((error, req, res, next) => {
 	res.status(error.code || 500);
 	res.json({message: error.message || 'An unknown error occurred!'});
 });
-  
+// console.log(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.casbs.mongodb.net/${process.env.DB_NAME}retryWrites=true&w=majority`);
 mongoose
 	.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.casbs.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`)
 	.then(() => {
 		app.listen(process.env.PORT || 5000, 'localhost', function() {
-			defaultLog.accessLog.info('Started server on port 5000');
+			defaultLog.accessLog.info('Started server on port',process.env.PORT ||5000);
 		});
 	})
 	.catch(err => {
 		console.log(err);
 	});
+
