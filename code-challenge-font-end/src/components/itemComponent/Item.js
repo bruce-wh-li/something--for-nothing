@@ -34,7 +34,7 @@ const PlaceItem = ({
 
     try {
       await sendRequest(
-        `http://localhost:5000/api/item/${id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/item/${id}`,
         'DELETE',
         null,
         {
