@@ -47,7 +47,6 @@ const SignIn = (props) => {
             );
 
             auth.login(responseData.userId, responseData.token);
-            console.log(auth.userId, auth.token);
           } catch (err) {}
           // setSubmitting(false); // not sure if I am goon use this or not, read doc for future reference
         }}
