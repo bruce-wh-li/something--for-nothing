@@ -37,7 +37,7 @@ const useAuth = () => {
       clearTimeout(logoutTimer);
     }
   }, [token, logout, tokenExpirationDate]);
-
+//store in localStorage so it will keep user login for () hour
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('userData'));
     if (
