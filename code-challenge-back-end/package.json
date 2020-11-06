@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "publishToHeroku": "cd ../ && git subtree push --prefix code-challenge-back-end heroku-app-backend master || true"
   },
   "author": "billy li",
   "license": "ISC",
