@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "publishToHeroku": "cd ../ && git subtree push --prefix code-challenge-font-end heroku-app-fontend master || true"
+    "publishToHeroku": "cd ../ && git subtree push --prefix code-challenge-font-end heroku-app-frontend master || true"
   },
   "eslintConfig": {
     "extends": "react-app"

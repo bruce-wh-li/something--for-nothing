@@ -1,0 +1,2 @@
+heroku git:remote --remote  heroku-app-backend -a photosharing-backend
+heroku git:remote --remote  heroku-app-frontend -a photosharing-frontend
