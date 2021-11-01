@@ -39,7 +39,7 @@ app.use((error, req, res, next) => {
 });
 // console.log(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.casbs.mongodb.net/${process.env.DB_NAME}retryWrites=true&w=majority`);
 mongoose
-	.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.casbs.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`)
+	.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_ADDRESS}/${process.env.DB_NAME}?retryWrites=true&w=majority`)
 	.then(() => {
 		app.listen(process.env.PORT || 5000, function() {
 			defaultLog.accessLog.info('Started server on port',process.env.PORT ||5000);
