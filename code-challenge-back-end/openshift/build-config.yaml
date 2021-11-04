@@ -74,7 +74,7 @@ parameters:
   displayName: Resources CPU Limit
   name: CPU_LIMIT
   required: true
-  value: "100m"
+  value: "1"
 - description: The resources Memory limit (in Mi, Gi, etc) for this build.
   displayName: Resources Memory Limit
   name: MEMORY_LIMIT
@@ -84,7 +84,7 @@ parameters:
   displayName: Resources CPU Request
   name: CPU_REQUEST
   required: true
-  value: "100m"
+  value: "1"
 - description: The resources Memory request (in Mi, Gi, etc) for this build.
   displayName: Resources Memory Request
   name: MEMORY_REQUEST
@@ -94,7 +94,7 @@ parameters:
   displayName: Source Context Directory
   name: SOURCE_CONTEXT_DIR
   required: false
-  value: "code-challenge-back-end"
+  value: "api"
 - description: The name of the source image.
   displayName: Source Image Name
   name: SOURCE_IMAGE_NAME
