@@ -1,0 +1,1 @@
+oc process -f build-config.yaml --param-file=build-config.properties | oc apply -f -
