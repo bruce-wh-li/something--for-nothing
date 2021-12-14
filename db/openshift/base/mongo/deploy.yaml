@@ -1,0 +1,113 @@
+# https://github.com/BCDevOps/resource-tuning-advisor-app/tree/main/devops/base/mongo
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mongodb
+  labels:
+    app: photo-sharing
+spec:
+  ports:
+    - name: mongodb
+      port: 27017
+  selector:
+    statefulset: mongodb
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mongodb-internal
+  labels:
+    app: photo-sharing
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+spec:    
+  clusterIP: None
+  ports:
+    - name: mongodb
+      port: 27017
+  selector:
+    statefulset: mongodb
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: mongodb
+  labels:
+    app: photo-sharing
+spec:
+  selector:
+    matchLabels:
+      statefulset: mongodb
+  serviceName: mongodb-internal
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: photo-sharing
+        statefulset: mongodb
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: name
+                operator: In
+                values: 
+                - mongodb
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: mongo-container
+          image: mongo:3.6
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 27017
+          args:
+            - "run-mongod"
+          volumeMounts:
+            - name: mongo-data
+              mountPath: /var/lib/mongodb/data
+          envFrom: 
+            - configMapRef:
+                name: mongodb-env
+          resources:
+            limits:
+              memory: 384Mi
+              cpu: 100m
+            requests:
+              memory: 128Mi
+              cpu: 80m
+          readinessProbe:
+            exec:
+              command:
+                - stat
+                - /tmp/initialized
+            initialDelaySeconds: 10
+            periodSeconds: 3
+            failureThreshold: 10
+              # command:
+              #   - /bin/bash
+              #   - -o 
+              #   - pipefail
+              #   - -ec
+              #   - >-
+              #     mongo --quiet 
+              #     -u $MONGO_INITDB_ROOT_USERNAME 
+              #     -p $MONGO_INITDB_ROOT_PASSWORD 
+              #     --eval "db.adminCommand('ping')" | 
+              #     /bin/grep -Eq '\"ok\"[[:space:]]+:[[:space:]]+1'
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-data
+        labels:
+          name: mongodb
+          app: photo-sharing
+      spec:
+        accessModes: [ ReadWriteOnce ]
+        storageClassName: netapp-block-standard
+        resources:
+          requests:
+            storage: 1G
+
+

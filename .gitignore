@@ -5,3 +5,4 @@ code-challenge-font-end/.env
 code-challenge-back-end/access.log
 code-challenge-back-end/errors.log
 code-challenge-back-end/nodemon.json
+deployment.yaml

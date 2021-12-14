@@ -2,28 +2,28 @@ apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
   labels:
-    app: ${NAME}-api
+    app: ${NAME}-web
   name: ${NAME}-build
   namespace: bcb254-dev
 objects:
 - apiVersion: v1
   kind: ImageStream
   metadata:
-    name: ${NAME}-api
+    name: ${NAME}-web
     labels:
-      app: ${NAME}-api
+      app: ${NAME}-web
 - apiVersion: v1
   kind: BuildConfig
   metadata:
-    name: ${NAME}-api-${GIT_REF}-build
+    name: ${NAME}-web-${GIT_REF}-build
     labels:
-      app: ${NAME}-api
-      name: ${NAME}-api-${GIT_REF}-build
+      app: ${NAME}-web
+      name: ${NAME}-web-${GIT_REF}-build
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: ${NAME}-api:${OUTPUT_IMAGE_TAG}
+        name: ${NAME}-web:${OUTPUT_IMAGE_TAG}
     resources:
       limits:
         cpu: ${CPU_LIMIT}
@@ -74,17 +74,17 @@ parameters:
   displayName: Resources CPU Limit
   name: CPU_LIMIT
   required: true
-  value: "50m"
-- description: The resources CPU request (in cores) for this build.
-  displayName: Resources CPU Request
-  name: CPU_REQUEST
-  required: true
-  value: "50m"
+  value: "1"
 - description: The resources Memory limit (in Mi, Gi, etc) for this build.
   displayName: Resources Memory Limit
   name: MEMORY_LIMIT
   required: true
   value: 1Gi
+- description: The resources CPU request (in cores) for this build.
+  displayName: Resources CPU Request
+  name: CPU_REQUEST
+  required: true
+  value: "1"
 - description: The resources Memory request (in Mi, Gi, etc) for this build.
   displayName: Resources Memory Request
   name: MEMORY_REQUEST
@@ -94,7 +94,7 @@ parameters:
   displayName: Source Context Directory
   name: SOURCE_CONTEXT_DIR
   required: false
-  value: "code-challenge-back-end"
+  value: "web"
 - description: The name of the source image.
   displayName: Source Image Name
   name: SOURCE_IMAGE_NAME

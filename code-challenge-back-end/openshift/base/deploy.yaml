@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: photo-sharing
+    role: api
+    deployment: photo-sharing-api
+  name: photo-sharing-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: photo-sharing
+      role: api
+      deployment: photo-sharing-api
+  template:
+    metadata:
+      labels:
+        app: photo-sharing
+        role: api
+        deployment: photo-sharing-api
+    spec:
+      containers:
+        - name: photo-sharing-api
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: MONGODB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: MONGODB_USER
+                  name: photo-sharing-mongo-creds
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: MONGODB_PASSWORD
+                  name: photo-sharing-mongo-creds
+            - name: MONGODB_ADDRESS
+              value: mongodb-internal.bcb254-prod.svc
+            - name: DB_NAME
+              value: photoSharing
+          image: photo-sharing-image
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/ehlo
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+          resources:
+            limits:
+              cpu: 300m
+              memory: 128Mi
+            requests:
+              cpu: 200m
+              memory: 92Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 2
