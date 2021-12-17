@@ -5,3 +5,7 @@ bases:
   - ../../base
 patches:
   - deployment.api_env.patch.yaml
+images:
+  - name: photo-sharing-api-master-build
+    newName: image-registry.openshift-image-registry.svc:5000/bcb254-tools/photo-sharing-api
+    newTag: "latest"
