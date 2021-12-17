@@ -9,4 +9,4 @@ spec:
         - name: photo-sharing-api
           env:
             - name: MONGODB_ADDRESS
-              value: mongodb-internal.bcb254-dev.svc
+              value: mongodb:27017
