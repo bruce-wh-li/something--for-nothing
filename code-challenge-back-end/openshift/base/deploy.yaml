@@ -39,8 +39,8 @@ spec:
               value: mongodb-internal.bcb254-prod.svc
             - name: DB_NAME
               value: photoSharing
-          image: photo-sharing-image
-          imagePullPolicy: IfNotPresent
+          image: photo-sharing-api-master-build
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
               protocol: TCP
