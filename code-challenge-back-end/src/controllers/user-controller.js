@@ -1,7 +1,7 @@
-const HttpError             = require('../api/helper/model/httpErrors');
+const HttpError             = require('../helper/model/httpErrors');
 const { validationResult }  = require('express-validator');
 var defaultLog              = require('../logger');
-const User                  = require('../api/helper/model/user');
+const User                  = require('../helper/model/user');
 var SECRET                  = process.env.SECRET || 'defaultSecret';
 
 const bcrypt = require('bcryptjs');
