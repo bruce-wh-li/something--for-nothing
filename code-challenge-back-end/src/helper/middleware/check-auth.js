@@ -1,7 +1,7 @@
 const jwt                   = require('jsonwebtoken');
 var SECRET                  = process.env.SECRET || 'defaultSecret';
 const HttpError             = require('../model/httpErrors');
-const defaultLog            =require('../../../logger');
+const defaultLog            =require('../../logger');
 
 /**
  *      For accessing the API a valid JWT token must be passed in all the queries in

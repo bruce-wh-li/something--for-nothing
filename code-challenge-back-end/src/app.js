@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const defaultLog    = require('./logger');
-const HttpError = require('./api/helper/model/httpErrors');
+const HttpError = require('./helper/model/httpErrors');
 const usersRoutes = require('./routes/user-routes');
 const itemRoutes = require('./routes/item-routes');
 const ehloRoutes = require('./routes/ehlo-routes');
@@ -41,7 +41,7 @@ app.use((error, req, res, next) => {
 });
 console.log(`mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`);
 mongoose
-	.connect(`mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`)
+	.connect(`mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.DB_NAME}??authSource=admin`)
 	.then(() => {
 		app.listen(process.env.PORT || 5000, function() {
 			defaultLog.accessLog.info('Started server on port',process.env.PORT ||5000);

@@ -2,8 +2,8 @@ var express     = require('express');
 var router      = express.Router();
 const itemControllers = require('../controllers/item-controller');
 const { check } = require('express-validator');
-const fileUpload = require('../api/helper/middleware/multer-file-upload');
-const checkAuth = require('../api/helper/middleware/check-auth');
+const fileUpload = require('../helper/middleware/multer-file-upload');
+const checkAuth = require('../helper/middleware/check-auth');
 
 
 
