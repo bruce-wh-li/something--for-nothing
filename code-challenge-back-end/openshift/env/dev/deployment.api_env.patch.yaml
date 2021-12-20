@@ -8,5 +8,5 @@ spec:
       containers:
         - name: photo-sharing-api
           env:
-            - name: MONGODB_ADDRESS
-              value: mongodb:27017
+            - name: MONGODB_HOST
+              value: mongodb.bcb254-dev.svc
