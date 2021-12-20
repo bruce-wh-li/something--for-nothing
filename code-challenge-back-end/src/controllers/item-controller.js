@@ -1,9 +1,9 @@
 const fs = require('fs');
 const { v4: uuidV4 } 		= require('uuid'); //has time stamp
 const { validationResult } 	= require('express-validator');
-const Item 					= require('../api/helper/model/item');
-const User 					= require('../api/helper/model/user');
-const HttpError 			= require('../api/helper/model/httpErrors');
+const Item 					= require('../helper/model/item');
+const User 					= require('../helper/model/user');
+const HttpError 			= require('../helper/model/httpErrors');
 const mongoose 				= require('mongoose');
 var defaultLog    = require('../logger');
 
