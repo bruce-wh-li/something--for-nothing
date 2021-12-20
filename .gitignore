@@ -2,7 +2,7 @@ code-challenge-back-end/node_modules/ajv/lib/dot/missing.def
 code-challenge-font-end/.env.production
 code-challenge-font-end/.env
 # code-challenge-back-end/uploads/images/
-code-challenge-back-end/access.log
+code-challenge-back-end/src/access.log
 code-challenge-back-end/src/errors.log
-code-challenge-back-end/src/nodemon.json
+code-challenge-back-end/nodemon.json
 deployment.yaml
