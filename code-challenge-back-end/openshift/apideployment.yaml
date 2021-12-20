@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: photo-sharing
+    deployment: photo-sharing-api
+    role: api
+  name: photo-sharing-api
+  namespace: bcb254-dev
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: photo-sharing
+      deployment: photo-sharing-api
+      role: api
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 2
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: photo-sharing
+        deployment: photo-sharing-api
+        role: api
+    spec:
+      containers:
+      - env:
+        - name: MONGODB_HOST
+          value: mongodb.bcb254-dev.svc
+        - name: MONGODB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: MONGODB_USER
+              name: photo-sharing-mongo-creds-fkd8kb28k9
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: MONGODB_PASSWORD
+              name: photo-sharing-mongo-creds-fkd8kb28k9
+        - name: NODE_ENV
+          value: production
+        - name: MONGODB_ADDRESS
+          value: mongodb-internal.bcb254-prod.svc
+        - name: DB_NAME
+          value: photoSharing
+        image: image-registry.openshift-image-registry.svc:5000/bcb254-tools/photo-sharing-api:latest
+        imagePullPolicy: Always
+        name: photo-sharing-api
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /api/ehlo
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 3
+        resources:
+          limits:
+            cpu: 300m
+            memory: 128Mi
+          requests:
+            cpu: 200m
+            memory: 92Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

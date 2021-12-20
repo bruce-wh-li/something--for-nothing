@@ -10,3 +10,13 @@ spec:
           env:
             - name: MONGODB_HOST
               value: mongodb.bcb254-dev.svc
+            - name: MONGODB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: MONGODB_USER
+                  name: photo-sharing-mongo-creds-fkd8kb28k9
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: MONGODB_PASSWORD
+                  name: photo-sharing-mongo-creds-fkd8kb28k9
