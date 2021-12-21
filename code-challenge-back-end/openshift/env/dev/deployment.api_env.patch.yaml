@@ -9,7 +9,7 @@ spec:
         - name: photo-sharing-api
           env:
             - name: MONGODB_HOST
-              value: mongodb.bcb254-dev.svc
+              value: mongodb:27017
             - name: MONGODB_USERNAME
               valueFrom:
                 secretKeyRef:
