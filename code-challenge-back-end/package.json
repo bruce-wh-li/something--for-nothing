@@ -6,11 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js",
+    "build": "babel -d dist src",
     "publishToHeroku": "cd ../ && git subtree push --prefix code-challenge-back-end heroku-app-backend master || true"
   },
   "author": "billy li",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
