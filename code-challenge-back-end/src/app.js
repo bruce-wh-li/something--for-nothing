@@ -41,7 +41,7 @@ app.use((error, req, res, next) => {
 });
 console.log(`mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.DB_NAME}?authSource=admin`);
 mongoose
-	.connect(`mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.DB_NAME}?auhSource=admin`,  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+	.connect(`mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.DB_NAME}?authSource=admin`,  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 	.then(() => {
 		app.listen(process.env.PORT || 5000, function() {
 			defaultLog.accessLog.info('Started server on port',process.env.PORT ||5000);
