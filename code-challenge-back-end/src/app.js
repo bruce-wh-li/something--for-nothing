@@ -39,12 +39,13 @@ app.use((error, req, res, next) => {
 	res.status(error.code || 500);
 	res.json({message: error.message || 'An unknown error occurred!'});
 });
-console.log(`mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.DB_NAME}?authSource=admin`);
+console.log(`mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.DB_NAME}`);
 mongoose
-	.connect(`mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.DB_NAME}?authSource=admin`,  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+	.connect(`mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOST}/${process.env.DB_NAME}`,  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 	.then(() => {
 		app.listen(process.env.PORT || 5000, function() {
 			defaultLog.accessLog.info('Started server on port',process.env.PORT ||5000);
+			defaultLog.accessLog.info('hiahiahia');
 		});
 	})
 	.catch(err => {

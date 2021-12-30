@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.js",
+    "start": "node dist/app.js",
     "build": "babel -d dist src",
+    "dev:docker": "nodemon -L --delay 1600ms --watch build --inspect=0.0.0.0:9229 -e js,json --nolazy ./dist/app.js",
     "publishToHeroku": "cd ../ && git subtree push --prefix code-challenge-back-end heroku-app-backend master || true"
   },
   "author": "billy li",

@@ -1,0 +1,20 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: photo-sharing-api
+  annotations:
+    openshift.io/host.generated: "true"
+    argocd.argoproj.io/sync-wave: "1"
+  labels:
+    app: photo-sharing
+spec:
+  host: photo-sharing-api-bcb254-dev.apps.clab.devops.gov.bc.ca
+  to:
+    kind: Service
+    name: photo-sharing-api
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+  wildcardPolicy: None

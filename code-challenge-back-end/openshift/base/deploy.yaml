@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: photo-sharing
-    role: api
+    role: server
     deployment: photo-sharing-api
   name: photo-sharing-api
 spec:
@@ -44,16 +44,16 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
-          readinessProbe:
-            failureThreshold: 3
-            httpGet:
-              path: /api/ehlo
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 10
-            periodSeconds: 10
-            successThreshold: 1
-            timeoutSeconds: 3
+          # readinessProbe:
+          #   failureThreshold: 3
+          #   httpGet:
+          #     path: /api/ehlo
+          #     port: 8080
+          #     scheme: HTTP
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 10
+          #   successThreshold: 1
+          #   timeoutSeconds: 3
           resources:
             limits:
               cpu: 300m
