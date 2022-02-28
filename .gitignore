@@ -7,3 +7,13 @@ code-challenge-back-end/src/errors.log
 code-challenge-back-end/nodemon.json
 code-challenge-back-end/dist
 deployment.yaml
+
+### Security Pipeline Demo ### 
+**/.creds
+**/.DS_Store
+**/*.secrets
+**/*.ini
+**/*.venv
+overlays/secrets/kustomization.yaml
+overlays/secrets/kustomization.yml
+.DS_Store
