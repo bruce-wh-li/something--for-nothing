@@ -4,7 +4,7 @@ apiVersion: warden.devops.gov.bc.ca/v1alpha1
 kind: GitOpsTeam
 metadata:
   name: gitopsteam-sample-codeql
-  namespace: 59e31e-tools
+  namespace: 59e31e-dev
 spec:
   # gitOpsMembers defines the git repo access (tenant-gitops-XYZ)
   # -------------------------------------------------------------
